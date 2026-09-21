@@ -1,4 +1,4 @@
-<!doctype html> 
+<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
@@ -21,6 +21,11 @@
 <body>
 
 <div style="width: 100%; min-height: 100%; background: #F7F5F1;">
+
+  <!-- BANDEAU PROMO -->
+  <div style="background:#B45309; color:#F7F5F1; text-align:center; padding:10px 16px; font-size:14px; font-weight:700; letter-spacing:.02em;">
+    🎉 Promo du mois : -20% appliqué automatiquement sur toutes les courses
+  </div>
 
   <!-- HEADER -->
   <div class="section-pad" style="display:flex; align-items:center; justify-content:space-between; padding: 20px 64px; border-bottom: 1px solid #E3DFD6;">
@@ -500,11 +505,13 @@
       quoteDetail = 'Environ ' + distanceKm + ' km — prise en charge + trajet.' + (realKm === null ? ' (estimation)' : '');
     }
     var vehicleMultiplier = (vehicle === 'van') ? 1.5 : 1;
-    price = Math.round(price * peakMultiplier * vehicleMultiplier);
+    var originalPrice = Math.round(price * peakMultiplier * vehicleMultiplier);
+    var PROMO_DISCOUNT = 0.20;
+    price = Math.round(originalPrice * (1 - PROMO_DISCOUNT));
 
     document.getElementById('quoteLabel').textContent = quoteLabel;
-    document.getElementById('quotePrice').textContent = price + ' €';
-    document.getElementById('quoteDetail').textContent = quoteDetail;
+    document.getElementById('quotePrice').innerHTML = '<span style="text-decoration:line-through; color:#8A8D96; font-size:20px; font-weight:600; margin-right:8px;">' + originalPrice + ' €</span>' + price + ' €';
+    document.getElementById('quoteDetail').textContent = quoteDetail + ' Promo -20% déjà appliquée.';
 
     currentQuotePrice = price;
     currentTripDetails = { pickup: pickup, destination: destination, datetime: datetime, vehicle: vehicle };
