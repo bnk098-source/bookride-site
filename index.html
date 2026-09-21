@@ -147,6 +147,22 @@
             <div id="quoteLabel" style="font-size:11px; color:#8A8D96; text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px;">Prix estimé</div>
             <div id="quotePrice" style="font-size:34px; font-weight:800; color:#F7F5F1; line-height:1;">0 €</div>
             <div id="quoteDetail" style="font-size:13px; color:#8A8D96; margin-top:8px;"></div>
+
+            <div style="margin-top:16px; padding-top:16px; border-top:1px solid #3A3D44;">
+              <div style="font-size:11px; color:#8A8D96; text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px;">Vos coordonnées</div>
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <div style="background:#20232A; border-radius:10px; padding:4px 14px;">
+                  <label for="customerName" style="display:block; font-size:11px; color:#8A8D96; margin-bottom:2px;">Nom et prénom</label>
+                  <input id="customerName" type="text" autocomplete="name" placeholder="Ex : Jean Dupont" style="width:100%; background:transparent; border:none; outline:none; color:#F7F5F1; font-size:15px; padding:6px 0; font-family:inherit;">
+                </div>
+                <div style="background:#20232A; border-radius:10px; padding:4px 14px;">
+                  <label for="customerPhone" style="display:block; font-size:11px; color:#8A8D96; margin-bottom:2px;">Numéro de téléphone</label>
+                  <input id="customerPhone" type="tel" autocomplete="tel" placeholder="Ex : 06 12 34 56 78" style="width:100%; background:transparent; border:none; outline:none; color:#F7F5F1; font-size:15px; padding:6px 0; font-family:inherit;">
+                </div>
+              </div>
+              <div id="contactErrorMsg" style="display:none; color:#F2A65A; font-size:13px; margin-top:8px;">Merci de renseigner votre nom et votre numéro de téléphone.</div>
+            </div>
+
             <div style="display:flex; gap:10px; margin-top:16px;">
               <a id="waBtn" href="#" style="flex:1; text-align:center; background:#25A25A; color:#ffffff; font-weight:700; padding:12px; border-radius:10px; font-size:14px;">WhatsApp</a>
               <a href="tel:+33760480229" style="flex:1; text-align:center; background:#F7F5F1; color:#1B1D22; font-weight:700; padding:12px; border-radius:10px; font-size:14px;">Appeler</a>
@@ -162,6 +178,7 @@
       </div>
     </div>
   </div>
+
 
   <!-- SERVICES -->
   <div class="section-pad" style="padding: 56px 64px; background:#FFFFFF; border-top:1px solid #E3DFD6; border-bottom:1px solid #E3DFD6;">
@@ -430,30 +447,46 @@
       if (!isNaN(hour) && hour >= 5 && hour < 10) { peakMultiplier = 1.10; }
     }
 
-    if (destLower.indexOf('cdg') !== -1 || destLower.indexOf('roissy') !== -1 || destLower.indexOf('charles de gaul') !== -1 || destLower.indexOf('charles-de-gaul') !== -1 || destLower.indexOf('terminal 1') !== -1 || destLower.indexOf('terminal 2') !== -1) {
+    var isAirportOrGareDest = destLower.indexOf('cdg') !== -1 || destLower.indexOf('roissy') !== -1 || destLower.indexOf('charles de gaul') !== -1 || destLower.indexOf('charles-de-gaul') !== -1 || destLower.indexOf('terminal 1') !== -1 || destLower.indexOf('terminal 2') !== -1 || destLower.indexOf('orly') !== -1 || destLower.indexOf('beauvais') !== -1 || destLower.indexOf('disney') !== -1 || destLower.indexOf('gare') !== -1;
+
+    if (!pickupArr && isAirportOrGareDest) {
+      // Prise en charge hors Paris : les forfaits fixes ne s'appliquent qu'au départ de Paris intra-muros.
+      // On calcule donc un prix au kilomètre réel, comme pour tout autre trajet hors zone.
+      calcBtnEl.disabled = true;
+      var originalBtnText = calcBtnEl.textContent;
+      calcBtnEl.textContent = 'Calcul du trajet...';
+      var realKm = await getRealDistanceKm(pickup, destination);
+      calcBtnEl.disabled = false;
+      calcBtnEl.textContent = originalBtnText;
+
+      var distanceKm = realKm !== null ? realKm : (3 + (hashStr(pickup + '|' + destination) % 33));
+      price = Math.max(25, 5 + distanceKm * 1.5);
+      quoteLabel = 'Prix estimé';
+      quoteDetail = 'Environ ' + distanceKm + ' km — prise en charge + trajet.' + (realKm === null ? ' (estimation)' : '');
+    } else if (destLower.indexOf('cdg') !== -1 || destLower.indexOf('roissy') !== -1 || destLower.indexOf('charles de gaul') !== -1 || destLower.indexOf('charles-de-gaul') !== -1 || destLower.indexOf('terminal 1') !== -1 || destLower.indexOf('terminal 2') !== -1) {
       price = (rive === 'gauche') ? 65 : 60;
       quoteLabel = 'Forfait Aéroport CDG' + (rive ? (rive === 'gauche' ? ' (Rive Gauche)' : ' (Rive Droite)') : '');
-      quoteDetail = 'Prix fixe depuis Paris' + (peakMultiplier > 1 ? ', majoré de 10 % (heure de pointe).' : ', tout compris.');
+      quoteDetail = 'Prix fixe depuis Paris, tout compris.';
     } else if (destLower.indexOf('orly') !== -1) {
       price = (rive === 'gauche') ? 50 : 55;
       quoteLabel = 'Forfait Aéroport Orly' + (rive ? (rive === 'gauche' ? ' (Rive Gauche)' : ' (Rive Droite)') : '');
-      quoteDetail = 'Prix fixe depuis Paris' + (peakMultiplier > 1 ? ', majoré de 10 % (heure de pointe).' : ', tout compris.');
+      quoteDetail = 'Prix fixe depuis Paris, tout compris.';
     } else if (destLower.indexOf('beauvais') !== -1) {
       price = (rive === 'gauche') ? 170 : 150;
       quoteLabel = 'Forfait Aéroport Beauvais' + (rive ? (rive === 'gauche' ? ' (Rive Gauche)' : ' (Rive Droite)') : '');
-      quoteDetail = 'Prix fixe depuis Paris' + (peakMultiplier > 1 ? ', majoré de 10 % (heure de pointe).' : ', tout compris.');
+      quoteDetail = 'Prix fixe depuis Paris, tout compris.';
     } else if (destLower.indexOf('disney') !== -1) {
       price = 60; quoteLabel = 'Forfait Disneyland Paris';
-      quoteDetail = 'Prix fixe depuis Paris' + (peakMultiplier > 1 ? ', majoré de 10 % (heure de pointe).' : ', tout compris.');
+      quoteDetail = 'Prix fixe depuis Paris, tout compris.';
     } else if (destLower.indexOf('gare') !== -1 && pickupArr) {
       price = (rive === 'gauche') ? 35 : 25;
       quoteLabel = 'Forfait Gare parisienne' + (rive ? (rive === 'gauche' ? ' (Rive Gauche)' : ' (Rive Droite)') : '');
-      quoteDetail = 'Prix fixe depuis Paris' + (peakMultiplier > 1 ? ', majoré de 10 % (heure de pointe).' : ', tout compris.');
+      quoteDetail = 'Prix fixe depuis Paris, tout compris.';
     } else if (pickupArr && destArr) {
       var adjacent = isAdjacentOrSame(pickupArr, destArr);
       price = adjacent ? 25 : 35;
       quoteLabel = 'Forfait intra-Paris (arrondissements ' + (adjacent ? 'voisins' : 'éloignés') + ')';
-      quoteDetail = pickupArr + 'e → ' + destArr + 'e' + (peakMultiplier > 1 ? ', majoré de 10 % (heure de pointe).' : '.');
+      quoteDetail = pickupArr + 'e → ' + destArr + 'e.';
     } else {
       calcBtnEl.disabled = true;
       var originalBtnText = calcBtnEl.textContent;
@@ -464,7 +497,7 @@
 
       var distanceKm = realKm !== null ? realKm : (3 + (hashStr(pickup + '|' + destination) % 33));
       price = Math.max(25, 5 + distanceKm * 1.5);
-      quoteDetail = 'Environ ' + distanceKm + ' km — prise en charge + trajet.' + (peakMultiplier > 1 ? ' Majoré de 10 % (heure de pointe).' : '') + (realKm === null ? ' (estimation)' : '');
+      quoteDetail = 'Environ ' + distanceKm + ' km — prise en charge + trajet.' + (realKm === null ? ' (estimation)' : '');
     }
     var vehicleMultiplier = (vehicle === 'van') ? 1.5 : 1;
     price = Math.round(price * peakMultiplier * vehicleMultiplier);
@@ -473,32 +506,76 @@
     document.getElementById('quotePrice').textContent = price + ' €';
     document.getElementById('quoteDetail').textContent = quoteDetail;
 
-    var message = [
-      'Bonjour, je souhaite réserver une course BookRide :',
-      'Départ : ' + pickup,
-      'Destination : ' + destination,
-      datetime ? ('Date/heure : ' + datetime) : '',
-      'Véhicule : ' + (vehicle === 'van' ? 'Van' : 'Eco'),
-      'Devis estimé : ' + price + ' €'
-    ].filter(Boolean).join('\n');
-
-    document.getElementById('waBtn').href = 'https://wa.me/33760480229?text=' + encodeURIComponent(message);
-    document.getElementById('paypalBtn').href = 'https://paypal.me/benkraouda/' + price + 'EUR';
     currentQuotePrice = price;
+    currentTripDetails = { pickup: pickup, destination: destination, datetime: datetime, vehicle: vehicle };
     quoteBox.style.display = 'block';
   });
 
   var currentQuotePrice = 0;
+  var currentTripDetails = null;
+
+  function getContactInfo() {
+    var name = document.getElementById('customerName').value.trim();
+    var phone = document.getElementById('customerPhone').value.trim();
+    var contactErrorMsg = document.getElementById('contactErrorMsg');
+    if (!name || !phone) {
+      contactErrorMsg.style.display = 'block';
+      return null;
+    }
+    contactErrorMsg.style.display = 'none';
+    return { name: name, phone: phone };
+  }
+
+  function buildTripMessage(contact) {
+    var t = currentTripDetails;
+    return [
+      'Bonjour, je souhaite réserver une course BookRide :',
+      'Nom : ' + contact.name,
+      'Téléphone : ' + contact.phone,
+      'Départ : ' + t.pickup,
+      'Destination : ' + t.destination,
+      t.datetime ? ('Date/heure : ' + t.datetime) : '',
+      'Véhicule : ' + (t.vehicle === 'van' ? 'Van' : 'Eco'),
+      'Devis estimé : ' + currentQuotePrice + ' €'
+    ].filter(Boolean).join('\n');
+  }
+
+  document.getElementById('waBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+    var contact = getContactInfo();
+    if (!contact) return;
+    var message = buildTripMessage(contact);
+    window.open('https://wa.me/33760480229?text=' + encodeURIComponent(message), '_blank');
+  });
+
+  document.getElementById('paypalBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+    var contact = getContactInfo();
+    if (!contact) return;
+    window.open('https://paypal.me/benkraouda/' + currentQuotePrice + 'EUR', '_blank');
+  });
+
   document.getElementById('stripeBtn').addEventListener('click', async function () {
+    var contact = getContactInfo();
+    if (!contact) return;
     var btn = this;
     if (!currentQuotePrice) return;
     btn.disabled = true;
     btn.textContent = 'Chargement...';
     try {
+      var t = currentTripDetails;
       var res = await fetch('/api/create-checkout-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount: currentQuotePrice })
+        body: JSON.stringify({
+          amount: currentQuotePrice,
+          customerName: contact.name,
+          customerPhone: contact.phone,
+          pickup: t.pickup,
+          destination: t.destination,
+          datetime: t.datetime,
+          vehicle: t.vehicle
+        })
       });
       var data = await res.json();
       if (data.url) {
