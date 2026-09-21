@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BookRide — Chauffeur privé Île-de-France</title>
+<style>
+  body { margin: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #F7F5F1; color: #1B1D22; }
+  a { color: inherit; text-decoration: none; }
+  * { box-sizing: border-box; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border-radius: 10px; font-weight: 600; font-size: 16px; padding: 15px 26px; min-height: 44px; transition: opacity .15s ease; border: none; cursor: pointer; font-family: inherit; }
+  .btn:hover { opacity: .88; }
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr !important; }
+    .services-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    .hero-title { font-size: 40px !important; }
+    .section-pad { padding-left: 24px !important; padding-right: 24px !important; }
+  }
+</style>
+</head>
+<body>
+
+<div style="width: 100%; min-height: 100%; background: #F7F5F1;">
+
+  <!-- HEADER -->
+  <div class="section-pad" style="display:flex; align-items:center; justify-content:space-between; padding: 20px 64px; border-bottom: 1px solid #E3DFD6;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1B1D22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm14 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM5 17l1.2-6.4A2 2 0 0 1 8.16 9h7.68a2 2 0 0 1 1.96 1.6L19 17M6 13h12"/></svg>
+      <div style="font-size:19px; font-weight:800; letter-spacing:-0.02em;">Book<span style="color:#B45309;">Ride</span></div>
+    </div>
+    <a href="tel:+33760480229" class="btn" style="background:#1B1D22; color:#F7F5F1; padding: 10px 18px; font-size: 14px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+      +33 7 60 48 02 29
+    </a>
+  </div>
+
+  <!-- HERO -->
+  <div class="section-pad" style="position:relative; overflow:hidden; padding: 72px 64px 64px;">
+
+    <svg viewBox="0 0 1400 260" preserveAspectRatio="xMidYMax slice" style="position:absolute; left:0; right:0; bottom:0; width:100%; height:220px; opacity:0.07; pointer-events:none;" aria-hidden="true">
+      <g fill="none" stroke="#1B1D22" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="0" y1="256" x2="1400" y2="256" stroke-width="2"/>
+        <g transform="translate(90,150)">
+          <path d="M0 106 V70 M60 106 V70 M30 106 V40"/>
+          <circle cx="30" cy="26" r="16"/>
+          <circle cx="0" cy="52" r="10"/>
+          <circle cx="60" cy="52" r="10"/>
+          <path d="M-20 106 H80"/>
+          <path d="M-20 106 V90 H80 V106"/>
+        </g>
+        <g transform="translate(660,10)">
+          <path d="M40 0 L14 200 M40 0 L66 200 M22 120 H58 M10 160 H70 M0 200 H80 M40 0 V200"/>
+          <path d="M30 60 H50 M26 90 H54"/>
+        </g>
+        <g transform="translate(1120,90)">
+          <path d="M0 166 V40 H26 V166 M74 166 V40 H100 V166"/>
+          <path d="M0 40 H100"/>
+          <path d="M8 40 V20 H18 V40 M82 40 V20 H92 V40"/>
+          <circle cx="50" cy="90" r="20"/>
+          <path d="M0 166 H100"/>
+        </g>
+      </g>
+    </svg>
+
+    <div class="hero-grid" style="position:relative; display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items:center; max-width: 1200px; margin: 0 auto;">
+      <div>
+        <div style="display:inline-flex; align-items:center; gap:8px; background:#EFE7D8; color:#8A5A1C; font-size:13px; font-weight:700; padding:6px 14px; border-radius:999px; margin-bottom:22px;">
+          Chauffeur privé — Île-de-France
+        </div>
+        <h1 class="hero-title" style="font-size: 52px; line-height:1.08; font-weight:800; letter-spacing:-0.03em; margin: 0 0 20px;">
+          Votre chauffeur, à l'heure, à chaque fois.
+        </h1>
+        <p style="font-size:18px; line-height:1.6; color:#4B4D54; max-width: 480px; margin: 0 0 32px;">
+          Rendez-vous, gares, aéroports ou départ en vacances : réservez un chauffeur VTC sérieux et ponctuel, avec la garantie que votre course sera assurée à 100 %.
+        </p>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="tel:+33760480229" class="btn" style="background:#1B1D22; color:#F7F5F1;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+            Appeler maintenant
+          </a>
+          <a href="https://wa.me/33760480229" class="btn" style="background:#25A25A; color:#ffffff;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.9 11.9 0 0 0 5.63 1.43h.01c6.54 0 11.85-5.3 11.85-11.85 0-3.17-1.23-6.14-3.37-8.42ZM12.04 21.5h-.01a9.7 9.7 0 0 1-4.94-1.35l-.35-.21-3.8 1 1.02-3.7-.23-.38a9.66 9.66 0 0 1-1.48-5.14c0-5.34 4.35-9.68 9.7-9.68a9.63 9.63 0 0 1 6.86 2.84 9.6 9.6 0 0 1 2.84 6.85c0 5.34-4.35 9.68-9.7 9.68Zm5.32-7.26c-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.66.15-.19.29-.75.95-.92 1.14-.17.2-.34.22-.63.07-.29-.14-1.22-.45-2.32-1.44-.86-.76-1.44-1.7-1.61-1.99-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.5.15-.17.19-.29.29-.48.1-.2.05-.37-.02-.51-.07-.15-.66-1.6-.91-2.18-.24-.58-.48-.5-.66-.51h-.56c-.19 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.43 0 1.43 1.04 2.82 1.19 3.01.15.2 2.05 3.13 4.97 4.39.69.3 1.24.48 1.66.61.7.22 1.33.19 1.83.12.56-.08 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34Z"/></svg>
+            WhatsApp
+          </a>
+        </div>
+        <div style="display:flex; gap:24px; margin-top: 36px; flex-wrap:wrap;">
+          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:#4B4D54;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m22 4-10 10-3-3"/></svg>
+            Chauffeur sérieux &amp; ponctuel
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:#4B4D54;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m22 4-10 10-3-3"/></svg>
+            Course assurée à 100 %
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:#4B4D54;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m22 4-10 10-3-3"/></svg>
+            Service à l'écoute
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#1B1D22; border-radius:20px; padding: 36px; color:#F7F5F1;">
+        <div style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:#C79A5A; margin-bottom:18px;">Réservation rapide</div>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="position:relative; display:flex; align-items:center; gap:10px; background:#2A2D34; border-radius:10px; padding:4px 16px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C79A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div style="flex:1; min-width:0;">
+              <label for="pickup" style="display:block; font-size:11px; color:#8A8D96; margin-bottom:2px;">Adresse de prise en charge</label>
+              <input id="pickup" type="text" autocomplete="off" placeholder="Ex : 12 rue de Rivoli, Paris" style="width:100%; background:transparent; border:none; outline:none; color:#F7F5F1; font-size:15px; padding:6px 0; font-family:inherit;">
+            </div>
+            <div id="pickupSuggestions" style="display:none; position:absolute; top:100%; left:0; right:0; margin-top:4px; background:#20232A; border:1px solid #3A3D44; border-radius:10px; overflow:hidden; z-index:20; max-height:220px; overflow-y:auto;"></div>
+          </div>
+          <div style="position:relative; display:flex; align-items:center; gap:10px; background:#2A2D34; border-radius:10px; padding:4px 16px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C79A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M3 11l18-5-5 18-4-8-8-4Z"/></svg>
+            <div style="flex:1; min-width:0;">
+              <label for="destination" style="display:block; font-size:11px; color:#8A8D96; margin-bottom:2px;">Destination (gare, aéroport, RDV...)</label>
+              <input id="destination" type="text" autocomplete="off" placeholder="Ex : Aéroport CDG, Terminal 2E" style="width:100%; background:transparent; border:none; outline:none; color:#F7F5F1; font-size:15px; padding:6px 0; font-family:inherit;">
+            </div>
+            <div id="destinationSuggestions" style="display:none; position:absolute; top:100%; left:0; right:0; margin-top:4px; background:#20232A; border:1px solid #3A3D44; border-radius:10px; overflow:hidden; z-index:20; max-height:220px; overflow-y:auto;"></div>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; background:#2A2D34; border-radius:10px; padding:4px 16px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C79A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <div style="flex:1; min-width:0;">
+              <label for="datetime" style="display:block; font-size:11px; color:#8A8D96; margin-bottom:2px;">Date et heure souhaitées</label>
+              <input id="datetime" type="datetime-local" style="width:100%; background:transparent; border:none; outline:none; color:#F7F5F1; font-size:15px; padding:6px 0; font-family:inherit; color-scheme:dark;">
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:10px; background:#2A2D34; border-radius:10px; padding:4px 16px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C79A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M5 17h14M5 17a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm14 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM5 17l1.2-6.4A2 2 0 0 1 8.16 9h7.68a2 2 0 0 1 1.96 1.6L19 17M6 13h12"/></svg>
+            <div style="flex:1; min-width:0;">
+              <label for="vehicle" style="display:block; font-size:11px; color:#8A8D96; margin-bottom:2px;">Gamme de véhicule</label>
+              <select id="vehicle" style="width:100%; background:transparent; border:none; outline:none; color:#F7F5F1; font-size:15px; padding:6px 0; font-family:inherit;">
+                <option value="eco" style="background:#2A2D34;">Eco</option>
+                <option value="van" style="background:#2A2D34;">Van</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="button" id="calcBtn" class="btn" style="margin-top:6px; background:#C79A5A; color:#1B1D22;">
+            Obtenir mon devis instantané
+          </button>
+
+          <div id="errorMsg" style="display:none; color:#F2A65A; font-size:13px; text-align:center;">Merci de renseigner le départ et la destination.</div>
+
+          <div id="quoteBox" style="display:none; background:#2A2D34; border:1px solid #C79A5A; border-radius:12px; padding:18px;">
+            <div id="quoteLabel" style="font-size:11px; color:#8A8D96; text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px;">Prix estimé</div>
+            <div id="quotePrice" style="font-size:34px; font-weight:800; color:#F7F5F1; line-height:1;">0 €</div>
+            <div id="quoteDetail" style="font-size:13px; color:#8A8D96; margin-top:8px;"></div>
+            <div style="display:flex; gap:10px; margin-top:16px;">
+              <a id="waBtn" href="#" style="flex:1; text-align:center; background:#25A25A; color:#ffffff; font-weight:700; padding:12px; border-radius:10px; font-size:14px;">WhatsApp</a>
+              <a href="tel:+33760480229" style="flex:1; text-align:center; background:#F7F5F1; color:#1B1D22; font-weight:700; padding:12px; border-radius:10px; font-size:14px;">Appeler</a>
+            </div>
+            <div style="display:flex; gap:10px; margin-top:10px;">
+              <a id="paypalBtn" href="#" target="_blank" rel="noopener" style="flex:1; text-align:center; background:#0070BA; color:#ffffff; font-weight:700; padding:12px; border-radius:10px; font-size:14px;">Payer avec PayPal</a>
+              <button id="stripeBtn" type="button" style="flex:1; text-align:center; background:#635BFF; color:#ffffff; font-weight:700; padding:12px; border-radius:10px; font-size:14px; border:none; cursor:pointer; font-family:inherit;">Payer par carte</button>
+            </div>
+          </div>
+
+          <div style="text-align:center; font-size:12px; color:#8A8D96;">Devis indicatif, confirmé avant validation de la course</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="section-pad" style="padding: 56px 64px; background:#FFFFFF; border-top:1px solid #E3DFD6; border-bottom:1px solid #E3DFD6;">
+    <div style="max-width:1200px; margin:0 auto;">
+      <h2 style="font-size:28px; font-weight:800; letter-spacing:-0.02em; margin: 0 0 8px;">Où que vous alliez</h2>
+      <p style="font-size:16px; color:#4B4D54; margin:0 0 32px;">Un seul chauffeur, quatre types de trajets, partout en Île-de-France.</p>
+      <div class="services-grid" style="display:grid; grid-template-columns: repeat(4, 1fr); gap:20px;">
+        <div style="border:1px solid #E3DFD6; border-radius:14px; padding:24px;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <div style="font-weight:700; font-size:16px; margin-top:14px;">Rendez-vous</div>
+          <div style="font-size:14px; color:#6B6E76; margin-top:6px; line-height:1.5;">Pro, médical, personnel — arrivez à l'heure, sans stress.</div>
+        </div>
+        <div style="border:1px solid #E3DFD6; border-radius:14px; padding:24px;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v18M16 3v18M3 8h18M3 16h18"/></svg>
+          <div style="font-weight:700; font-size:16px; margin-top:14px;">Gares</div>
+          <div style="font-size:14px; color:#6B6E76; margin-top:6px; line-height:1.5;">Gare du Nord, Lyon, Montparnasse... dépose et prise en charge.</div>
+        </div>
+        <div style="border:1px solid #E3DFD6; border-radius:14px; padding:24px;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-1 .1-1.3.5l-.4.6c-.4.5-.2 1.2.3 1.5L9 12l-2 3H4l-1 1.5 3 1 1 3L8.5 19l3-2 3.6 5.6c.3.5 1 .7 1.5.3l.6-.4c.4-.3.6-.8.5-1.3Z"/></svg>
+          <div style="font-weight:700; font-size:16px; margin-top:14px;">Aéroports</div>
+          <div style="font-size:14px; color:#6B6E76; margin-top:6px; line-height:1.5;">CDG, Orly, Beauvais — trajet surveillé, vol suivi.</div>
+        </div>
+        <div style="border:1px solid #E3DFD6; border-radius:14px; padding:24px;">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 21v-2a6 6 0 0 1 12 0v2"/></svg>
+          <div style="font-weight:700; font-size:16px; margin-top:14px;">Vacances</div>
+          <div style="font-size:14px; color:#6B6E76; margin-top:6px; line-height:1.5;">Départs en famille, bagages, longue distance.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ENGAGEMENTS -->
+  <div class="section-pad" style="padding: 56px 64px;">
+    <div class="services-grid" style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns: repeat(4, 1fr); gap:28px;">
+      <div>
+        <div style="width:44px; height:44px; border-radius:10px; background:#1B1D22; display:flex; align-items:center; justify-content:center; margin-bottom:14px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C79A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div style="font-weight:700; font-size:17px; margin-bottom:6px;">Toujours à l'heure</div>
+        <div style="font-size:14px; color:#6B6E76; line-height:1.55;">Chaque trajet est anticipé pour respecter l'horaire convenu, même en cas de trafic.</div>
+      </div>
+      <div>
+        <div style="width:44px; height:44px; border-radius:10px; background:#1B1D22; display:flex; align-items:center; justify-content:center; margin-bottom:14px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C79A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+        </div>
+        <div style="font-weight:700; font-size:17px; margin-bottom:6px;">Course assurée à 100 %</div>
+        <div style="font-size:14px; color:#6B6E76; line-height:1.55;">Une fois réservée, votre course est garantie — quoi qu'il arrive.</div>
+      </div>
+      <div>
+        <div style="width:44px; height:44px; border-radius:10px; background:#1B1D22; display:flex; align-items:center; justify-content:center; margin-bottom:14px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C79A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        </div>
+        <div style="font-weight:700; font-size:17px; margin-bottom:6px;">Service à l'écoute</div>
+        <div style="font-size:14px; color:#6B6E76; line-height:1.55;">Disponible avant et pendant la course pour s'adapter à vos besoins.</div>
+      </div>
+      <div>
+        <div style="width:44px; height:44px; border-radius:10px; background:#1B1D22; display:flex; align-items:center; justify-content:center; margin-bottom:14px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C79A5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"/></svg>
+        </div>
+        <div style="font-weight:700; font-size:17px; margin-bottom:6px;">Clients fidèles privilégiés</div>
+        <div style="font-size:14px; color:#6B6E76; line-height:1.55;">Tarifs préférentiels pour nos habitués aux heures creuses.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOYENS DE PAIEMENT -->
+  <div class="section-pad" style="padding: 40px 64px 56px; background:#FFFFFF; border-top:1px solid #E3DFD6; border-bottom:1px solid #E3DFD6;">
+    <div style="max-width:1200px; margin:0 auto;">
+      <h2 style="font-size:22px; font-weight:800; letter-spacing:-0.02em; margin: 0 0 24px;">Moyens de paiement acceptés</h2>
+      <div class="services-grid" style="display:grid; grid-template-columns: repeat(4, 1fr); gap:20px;">
+        <div style="display:flex; align-items:center; gap:12px; border:1px solid #E3DFD6; border-radius:12px; padding:16px 18px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l9-3 9 3M4 10v9M20 10v9M8 10v9M16 10v9M2 21h20M3 10h18l-1-4H4l-1 4Z"/></svg>
+          <div style="font-size:14px; font-weight:600;">Paiement à bord</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; border:1px solid #E3DFD6; border-radius:12px; padding:16px 18px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20"/></svg>
+          <div style="font-size:14px; font-weight:600;">Paiement en ligne sur le site</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; border:1px solid #E3DFD6; border-radius:12px; padding:16px 18px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>
+          <div style="font-size:14px; font-weight:600;">Espèces</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px; border:1px solid #E3DFD6; border-radius:12px; padding:16px 18px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg>
+          <div style="font-size:14px; font-weight:600;">Carte bancaire</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA FINAL -->
+  <div class="section-pad" style="padding: 56px 64px 72px;">
+    <div style="max-width:1200px; margin:0 auto; background:#1B1D22; border-radius:20px; padding: 44px 48px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px;">
+      <div>
+        <div style="color:#F7F5F1; font-size:24px; font-weight:800; margin-bottom:6px;">Besoin d'un chauffeur en Île-de-France ?</div>
+        <div style="color:#B7B9BF; font-size:15px;">Appelez ou envoyez un message, la réponse est rapide.</div>
+      </div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="tel:+33760480229" class="btn" style="background:#F7F5F1; color:#1B1D22;">+33 7 60 48 02 29</a>
+        <a href="https://wa.me/33760480229" class="btn" style="background:#25A25A; color:#ffffff;">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="section-pad" style="padding: 24px 64px; border-top:1px solid #E3DFD6; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+    <div style="font-size:13px; color:#8A8D96;">© 2026 BookRide — Chauffeur privé en Île-de-France</div>
+    <div style="font-size:13px; color:#8A8D96;">Numéro affiché à titre d'exemple</div>
+  </div>
+
+</div>
+
+<script>
+  // --- Autocomplétion d'adresse (Google Places API - New) ---
+  var GOOGLE_PLACES_API_KEY = 'AIzaSyC7iULjGpUvxL0RMe8d3juTy-eBhUinJGg';
+
+  function setupAddressAutocomplete(inputId, suggestionsId) {
+    var input = document.getElementById(inputId);
+    var box = document.getElementById(suggestionsId);
+    var debounceTimer = null;
+
+    function hideBox() { box.style.display = 'none'; box.innerHTML = ''; }
+
+    function renderSuggestions(items) {
+      box.innerHTML = '';
+      if (!items.length) { hideBox(); return; }
+      items.forEach(function (text) {
+        var row = document.createElement('div');
+        row.textContent = text;
+        row.style.cssText = 'padding:10px 14px; font-size:14px; color:#F7F5F1; cursor:pointer;';
+        row.addEventListener('mousedown', function (e) {
+          e.preventDefault();
+          input.value = text;
+          hideBox();
+        });
+        row.addEventListener('mouseenter', function () { row.style.background = '#2A2D34'; });
+        row.addEventListener('mouseleave', function () { row.style.background = 'transparent'; });
+        box.appendChild(row);
+      });
+      box.style.display = 'block';
+    }
+
+    async function fetchSuggestions(text) {
+      if (!text || text.length < 3) { hideBox(); return; }
+      try {
+        var res = await fetch('https://places.googleapis.com/v1/places:autocomplete', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Goog-Api-Key': GOOGLE_PLACES_API_KEY
+          },
+          body: JSON.stringify({ input: text, includedRegionCodes: ['fr'] })
+        });
+        var data = await res.json();
+        var items = (data.suggestions || [])
+          .map(function (s) { return s.placePrediction ? s.placePrediction.text.text : null; })
+          .filter(Boolean);
+        renderSuggestions(items);
+      } catch (err) {
+        hideBox();
+      }
+    }
+
+    input.addEventListener('input', function () {
+      clearTimeout(debounceTimer);
+      var value = input.value;
+      debounceTimer = setTimeout(function () { fetchSuggestions(value); }, 300);
+    });
+
+    input.addEventListener('blur', function () {
+      setTimeout(hideBox, 150);
+    });
+  }
+
+  setupAddressAutocomplete('pickup', 'pickupSuggestions');
+  setupAddressAutocomplete('destination', 'destinationSuggestions');
+</script>
+
+<script>
+  function hashStr(s) {
+    let h = 0;
+    for (let i = 0; i < s.length; i++) { h = (h * 31 + s.charCodeAt(i)) >>> 0; }
+    return h;
+  }
+
+  async function getRealDistanceKm(origin, destination) {
+    try {
+      var res = await fetch('https://routes.googleapis.com/directions/v2:computeRoutes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Goog-Api-Key': GOOGLE_PLACES_API_KEY,
+          'X-Goog-FieldMask': 'routes.distanceMeters'
+        },
+        body: JSON.stringify({
+          origin: { address: origin },
+          destination: { address: destination },
+          travelMode: 'DRIVE'
+        })
+      });
+      var data = await res.json();
+      if (data.routes && data.routes.length && data.routes[0].distanceMeters) {
+        return Math.round(data.routes[0].distanceMeters / 1000);
+      }
+      return null;
+    } catch (err) {
+      return null;
+    }
+  }
+
+  document.getElementById('calcBtn').addEventListener('click', async function () {
+    var calcBtnEl = this;
+    var pickup = document.getElementById('pickup').value.trim();
+    var destination = document.getElementById('destination').value.trim();
+    var datetime = document.getElementById('datetime').value;
+    var vehicle = document.getElementById('vehicle').value;
+    var errorMsg = document.getElementById('errorMsg');
+    var quoteBox = document.getElementById('quoteBox');
+
+    if (!pickup || !destination) {
+      errorMsg.style.display = 'block';
+      quoteBox.style.display = 'none';
+      return;
+    }
+    errorMsg.style.display = 'none';
+
+    function normalize(s) {
+      return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+    var destLower = normalize(destination);
+    var pickupLower = normalize(pickup);
+    var price = 0, quoteLabel = 'Prix estimé', quoteDetail = '';
+
+    var riveGaucheArr = [5, 6, 7, 13, 14, 15];
+    function getArr(addr) {
+      var m = addr.match(/75(\d{3})/);
+      var arr = null;
+      if (m) { arr = (m[1] === '116') ? 16 : parseInt(m[1], 10); }
+      if (!arr) {
+        var m2 = addr.match(/(\d{1,2})\s*(?:e|ème|eme)\b/i);
+        if (m2) arr = parseInt(m2[1], 10);
+      }
+      return arr;
+    }
+    function detectRive(addr) {
+      var arr = getArr(addr);
+      if (!arr) return null;
+      return riveGaucheArr.indexOf(arr) !== -1 ? 'gauche' : 'droite';
+    }
+    var rive = detectRive(pickupLower);
+    var pickupArr = getArr(pickupLower);
+    var destArr = getArr(destLower);
+
+    var arrNeighbors = {
+      1: [2,3,4,5,6,7,8], 2: [1,3,9,10], 3: [1,2,4,10,11], 4: [1,3,5,11,12],
+      5: [1,4,6,12,13], 6: [1,5,7,14,15], 7: [1,6,8,15], 8: [1,7,9,16,17],
+      9: [2,8,10,17,18], 10: [2,3,9,11,18,19], 11: [3,4,10,12,19,20], 12: [4,5,11,13,20],
+      13: [5,12,14], 14: [6,13,15], 15: [6,7,14,16], 16: [8,15,17],
+      17: [8,9,16,18], 18: [9,10,17,19], 19: [10,11,18,20], 20: [11,12,19]
+    };
+    function isAdjacentOrSame(a, b) { return a === b || (arrNeighbors[a] && arrNeighbors[a].indexOf(b) !== -1); }
+
+    var peakMultiplier = 1;
+    if (datetime) {
+      var hour = parseInt(datetime.split('T')[1], 10);
+      if (!isNaN(hour) && hour >= 5 && hour < 10) { peakMultiplier = 1.10; }
+    }
+
+    if (destLower.indexOf('cdg') !== -1 || destLower.indexOf('roissy') !== -1 || destLower.indexOf('charles de gaul') !== -1 || destLower.indexOf('charles-de-gaul') !== -1 || destLower.indexOf('terminal 1') !== -1 || destLower.indexOf('terminal 2') !== -1) {
+      price = (rive === 'gauche') ? 65 : 60;
+      quoteLabel = 'Forfait Aéroport CDG' + (rive ? (rive === 'gauche' ? ' (Rive Gauche)' : ' (Rive Droite)') : '');
+      quoteDetail = 'Prix fixe depuis Paris' + (peakMultiplier > 1 ? ', majoré de 10 % (heure de pointe).' : ', tout compris.');
+    } else if (destLower.indexOf('orly') !== -1) {
+      price = (rive === 'gauche') ? 50 : 55;
+      quoteLabel = 'Forfait Aéroport Orly' + (rive ? (rive === 'gauche' ? ' (Rive Gauche)' : ' (Rive Droite)') : '');
+      quoteDetail = 'Prix fixe depuis Paris' + (peakMultiplier > 1 ? ', majoré de 10 % (heure de pointe).' : ', tout compris.');
+    } else if (destLower.indexOf('beauvais') !== -1) {
+      price = (rive === 'gauche') ? 170 : 150;
+      quoteLabel = 'Forfait Aéroport Beauvais' + (rive ? (rive === 'gauche' ? ' (Rive Gauche)' : ' (Rive Droite)') : '');
+      quoteDetail = 'Prix fixe depuis Paris' + (peakMultiplier > 1 ? ', majoré de 10 % (heure de pointe).' : ', tout compris.');
+    } else if (destLower.indexOf('disney') !== -1) {
+      price = 60; quoteLabel = 'Forfait Disneyland Paris';
+      quoteDetail = 'Prix fixe depuis Paris' + (peakMultiplier > 1 ? ', majoré de 10 % (heure de pointe).' : ', tout compris.');
+    } else if (destLower.indexOf('gare') !== -1 && pickupArr) {
+      price = (rive === 'gauche') ? 35 : 25;
+      quoteLabel = 'Forfait Gare parisienne' + (rive ? (rive === 'gauche' ? ' (Rive Gauche)' : ' (Rive Droite)') : '');
+      quoteDetail = 'Prix fixe depuis Paris' + (peakMultiplier > 1 ? ', majoré de 10 % (heure de pointe).' : ', tout compris.');
+    } else if (pickupArr && destArr) {
+      var adjacent = isAdjacentOrSame(pickupArr, destArr);
+      price = adjacent ? 25 : 35;
+      quoteLabel = 'Forfait intra-Paris (arrondissements ' + (adjacent ? 'voisins' : 'éloignés') + ')';
+      quoteDetail = pickupArr + 'e → ' + destArr + 'e' + (peakMultiplier > 1 ? ', majoré de 10 % (heure de pointe).' : '.');
+    } else {
+      calcBtnEl.disabled = true;
+      var originalBtnText = calcBtnEl.textContent;
+      calcBtnEl.textContent = 'Calcul du trajet...';
+      var realKm = await getRealDistanceKm(pickup, destination);
+      calcBtnEl.disabled = false;
+      calcBtnEl.textContent = originalBtnText;
+
+      var distanceKm = realKm !== null ? realKm : (3 + (hashStr(pickup + '|' + destination) % 33));
+      price = Math.max(25, 5 + distanceKm * 1.5);
+      quoteDetail = 'Environ ' + distanceKm + ' km — prise en charge + trajet.' + (peakMultiplier > 1 ? ' Majoré de 10 % (heure de pointe).' : '') + (realKm === null ? ' (estimation)' : '');
+    }
+    var vehicleMultiplier = (vehicle === 'van') ? 1.5 : 1;
+    price = Math.round(price * peakMultiplier * vehicleMultiplier);
+
+    document.getElementById('quoteLabel').textContent = quoteLabel;
+    document.getElementById('quotePrice').textContent = price + ' €';
+    document.getElementById('quoteDetail').textContent = quoteDetail;
+
+    var message = [
+      'Bonjour, je souhaite réserver une course BookRide :',
+      'Départ : ' + pickup,
+      'Destination : ' + destination,
+      datetime ? ('Date/heure : ' + datetime) : '',
+      'Véhicule : ' + (vehicle === 'van' ? 'Van' : 'Eco'),
+      'Devis estimé : ' + price + ' €'
+    ].filter(Boolean).join('\n');
+
+    document.getElementById('waBtn').href = 'https://wa.me/33760480229?text=' + encodeURIComponent(message);
+    document.getElementById('paypalBtn').href = 'https://paypal.me/benkraouda/' + price + 'EUR';
+    currentQuotePrice = price;
+    quoteBox.style.display = 'block';
+  });
+
+  var currentQuotePrice = 0;
+  document.getElementById('stripeBtn').addEventListener('click', async function () {
+    var btn = this;
+    if (!currentQuotePrice) return;
+    btn.disabled = true;
+    btn.textContent = 'Chargement...';
+    try {
+      var res = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: currentQuotePrice })
+      });
+      var data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert('Erreur lors de la préparation du paiement : ' + (data.error || 'inconnue'));
+        btn.disabled = false;
+        btn.textContent = 'Payer par carte';
+      }
+    } catch (err) {
+      alert('Erreur de connexion au paiement.');
+      btn.disabled = false;
+      btn.textContent = 'Payer par carte';
+    }
+  });
+</script>
+
+</body>
+</html>
