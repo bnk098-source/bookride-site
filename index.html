@@ -418,6 +418,14 @@
     var price = 0, quoteLabel = 'Prix estimé', quoteDetail = '';
 
     var riveGaucheArr = [5, 6, 7, 13, 14, 15];
+    var PARIS_LANDMARKS = {
+      'gare de lyon': 12, 'gare du nord': 10, 'gare montparnasse': 15,
+      'gare saint-lazare': 8, 'gare st-lazare': 8, 'gare de l\'est': 10,
+      'gare d\'austerlitz': 13, 'gare de bercy': 12,
+      'tour eiffel': 7, 'arc de triomphe': 8, 'notre-dame': 4,
+      'louvre': 1, 'chatelet': 1, 'châtelet': 1, 'opera garnier': 9,
+      'opéra garnier': 9, 'gare de paris-bercy': 12
+    };
     function getArr(addr) {
       var m = addr.match(/75(\d{3})/);
       var arr = null;
@@ -425,6 +433,11 @@
       if (!arr) {
         var m2 = addr.match(/(\d{1,2})\s*(?:e|ème|eme)\b/i);
         if (m2) arr = parseInt(m2[1], 10);
+      }
+      if (!arr) {
+        for (var landmark in PARIS_LANDMARKS) {
+          if (addr.indexOf(landmark) !== -1) { arr = PARIS_LANDMARKS[landmark]; break; }
+        }
       }
       return arr;
     }
