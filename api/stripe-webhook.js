@@ -1,4 +1,6 @@
 const DRIVER_EMAIL = 'bnk098@icloud.com';
+const DRIVER_WHATSAPP_PHONE = '33760480229';
+const CALLMEBOT_APIKEY = '8593697';
 
 async function sendNotificationEmail(session) {
   const m = session.metadata || {};
@@ -30,6 +32,26 @@ async function sendNotificationEmail(session) {
   });
 }
 
+async function sendNotificationWhatsapp(session) {
+  const m = session.metadata || {};
+  const amount = (session.amount_total / 100).toFixed(2);
+
+  const text = [
+    '🚗 Nouvelle course payée - ' + amount + ' EUR',
+    'Client: ' + (m.customerName || 'Non renseigne'),
+    'Tel: ' + (m.customerPhone || 'Non renseigne'),
+    'Depart: ' + (m.pickup || 'Non renseigne'),
+    'Destination: ' + (m.destination || 'Non renseigne'),
+    'Date/heure: ' + (m.datetime || 'Non renseignee'),
+    'Vehicule: ' + (m.vehicle === 'van' ? 'Van' : 'Eco')
+  ].join('\n');
+
+  const url = 'https://api.callmebot.com/whatsapp.php?phone=' + DRIVER_WHATSAPP_PHONE +
+    '&text=' + encodeURIComponent(text) + '&apikey=' + CALLMEBOT_APIKEY;
+
+  await fetch(url);
+}
+
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
     res.status(405).send('Méthode non autorisée');
@@ -44,6 +66,11 @@ module.exports = async (req, res) => {
       await sendNotificationEmail(session);
     } catch (err) {
       console.error('Erreur envoi email :', err);
+    }
+    try {
+      await sendNotificationWhatsapp(session);
+    } catch (err) {
+      console.error('Erreur envoi WhatsApp :', err);
     }
   }
 
