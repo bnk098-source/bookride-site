@@ -60,7 +60,7 @@ export default async function handler(req, res) {
   try {
     event = stripe.webhooks.constructEvent(rawBody, signature, process.env.STRIPE_WEBHOOK_SECRET);
   } catch (err) {
-    res.status(400).send('Signature invalide : ' + err.message);
+    res.status(400).send('DEBUG longueur=' + rawBody.length + ' apercu=' + rawBody.toString('utf8').slice(0, 80) + ' | signatureHeader=' + (signature ? 'present' : 'absent') + ' | erreur=' + err.message);
     return;
   }
 
