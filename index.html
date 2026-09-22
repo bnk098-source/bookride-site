@@ -291,7 +291,7 @@
   <!-- FOOTER -->
   <div class="section-pad" style="padding: 24px 64px; border-top:1px solid #E3DFD6; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;">
     <div style="font-size:13px; color:#8A8D96;">© 2026 BookRide — Chauffeur privé en Île-de-France</div>
-    <div style="font-size:13px; color:#8A8D96;">Numéro affiché à titre d'exemple</div>
+    <div style="font-size:13px; color:#8A8D96;">Réservation rapide et sans engagement</div>
   </div>
 
 </div>
@@ -599,6 +599,14 @@
       });
       var data = await res.json();
       if (data.url) {
+        localStorage.setItem('bookride_last_reservation', JSON.stringify({
+          pickup: t.pickup,
+          destination: t.destination,
+          datetime: t.datetime,
+          vehicle: t.vehicle,
+          price: currentQuotePrice,
+          customerName: contact.name
+        }));
         window.location.href = data.url;
       } else {
         alert('Erreur lors de la préparation du paiement : ' + (data.error || 'inconnue'));
@@ -611,6 +619,58 @@
       btn.textContent = 'Payer par carte';
     }
   });
+
+  (function checkPaymentReturn() {
+    var params = new URLSearchParams(window.location.search);
+    var status = params.get('paiement');
+    if (!status) return;
+
+    var banner = document.createElement('div');
+    var savedRaw = localStorage.getItem('bookride_last_reservation');
+    var saved = null;
+    try { saved = savedRaw ? JSON.parse(savedRaw) : null; } catch (e) {}
+
+    if (status === 'succes') {
+      var recap = saved ? [
+        '<div style="margin-top:10px; font-size:14px; opacity:.95;">',
+        '<div><strong>Départ :</strong> ' + saved.pickup + '</div>',
+        '<div><strong>Destination :</strong> ' + saved.destination + '</div>',
+        saved.datetime ? ('<div><strong>Date/heure :</strong> ' + saved.datetime + '</div>') : '',
+        '<div><strong>Montant payé :</strong> ' + saved.price + ' €</div>',
+        '</div>'
+      ].join('') : '';
+
+      banner.innerHTML = [
+        '<div style="max-width:640px; margin:24px auto; background:#1F3D2B; border:1px solid #3C8C5C; border-radius:14px; padding:20px 22px; color:#EAF6EE; font-family:inherit;">',
+        '<div style="font-size:19px; font-weight:800;">✅ Réservation confirmée !</div>',
+        '<div style="margin-top:6px; font-size:14px; opacity:.95;">Merci' + (saved && saved.customerName ? (' ' + saved.customerName) : '') + ', votre paiement a bien été reçu. Votre chauffeur vous contactera avant la course si besoin.</div>',
+        recap,
+        '</div>'
+      ].join('');
+    } else if (status === 'annule') {
+      banner.innerHTML = [
+        '<div style="max-width:640px; margin:24px auto; background:#3D2A1F; border:1px solid #8C5C3C; border-radius:14px; padding:20px 22px; color:#F6E9EA; font-family:inherit;">',
+        '<div style="font-size:19px; font-weight:800;">Paiement annulé</div>',
+        '<div style="margin-top:6px; font-size:14px; opacity:.95;">Votre réservation n\'a pas été finalisée. Vous pouvez réessayer ou nous contacter directement.</div>',
+        '</div>'
+      ].join('');
+    } else {
+      return;
+    }
+
+    var header = document.querySelector('body > div');
+    if (header) {
+      header.insertBefore(banner, header.children[1] || null);
+    }
+
+    if (status === 'succes') {
+      localStorage.removeItem('bookride_last_reservation');
+    }
+
+    var url = new URL(window.location.href);
+    url.searchParams.delete('paiement');
+    window.history.replaceState({}, document.title, url.pathname + url.hash);
+  })();
 </script>
 
 </body>
