@@ -3,12 +3,6 @@ const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
 const DRIVER_EMAIL = 'bnk098@icloud.com';
 
-module.exports.config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 function getRawBody(req) {
   return new Promise((resolve, reject) => {
     var chunks = [];
@@ -48,7 +42,7 @@ async function sendNotificationEmail(session) {
   });
 }
 
-module.exports = async (req, res) => {
+async function handler(req, res) {
   if (req.method !== 'POST') {
     res.status(405).send('Méthode non autorisée');
     return;
@@ -75,4 +69,12 @@ module.exports = async (req, res) => {
   }
 
   res.status(200).json({ received: true });
+}
+
+handler.config = {
+  api: {
+    bodyParser: false,
+  },
 };
+
+module.exports = handler;
